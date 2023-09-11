@@ -4,7 +4,6 @@ import json
 import unicodedata
 # import re
 #
-from glob import iglob
 from decimal import Decimal
 from collections import OrderedDict
 from . import errors 
@@ -46,7 +45,7 @@ class BaseField(object):
 
         if self.formatting == 'alfa':
             if not bool(value):
-                valor = self._cut(self.default,self.digits) if bool(self.default) else ""
+                value = self._cut(self.default,self.digits) if bool(self.default) else ""
                 
             if not isinstance(value, str):
                 print("{0} - {1}".format(self.name, value))
