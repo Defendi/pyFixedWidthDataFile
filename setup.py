@@ -3,12 +3,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyFixedWidthDataFile',
-    version='0.0.1',
+    version='0.0.3',
     author='OpusSystem',
     author_email='suporte@opussystem.com.br',
     url='https://www.opussystem.com.br',
     keywords=['fixed', 'width', 'text'],
-    packages=find_packages(exclude=['*tests*']),
+    packages=find_packages(exclude=['tests.specs']),
     include_package_data=True,
     package_data={
     },
