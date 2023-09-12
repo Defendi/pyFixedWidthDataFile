@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
+from os.path import join, dirname
+
+exec(open(join(dirname(__file__), 'version.py'), 'rb').read())  # Load release variables
 
 setup(
     name='pyFixedWidthDataFile',
-    version='0.0.3',
+    version=version,
     author='OpusSystem',
     author_email='suporte@opussystem.com.br',
     url='https://www.opussystem.com.br',
