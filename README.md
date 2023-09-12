@@ -87,9 +87,9 @@ Open the record with "{", enter the name clause, it is mandatory. Open the list 
 > 2. num: numeric (integer, floating point)
 * <b>default</b>: (optional) default value of the field, if there is no default value the field will not be filled with spaces, even if it is numeric.
 * <b>decimals</b>: (optional) only for numeric fields, number of decimal places
-* <b>ignore</b>: field to be ignored
-* <b>required</b>: mandatory field
-* <b>regex</b>: Regular expression operations field
+* <b>ignore</b>: (optional) field to be ignored
+* <b>required</b>: (optional) mandatory field
+* <b>regex</b>: (optional) regular expression operations field
 
 3) <b>Inject the lines from the file:</b>:
 <code>
