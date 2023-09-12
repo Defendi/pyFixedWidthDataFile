@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 from os.path import join, dirname
 import subprocess
 
-version = subprocess.check_output(["git", "describe", "--abbrev=0", "--tags"]).decode('ascii').strip()
+version = "{{VERSION_PLACEHOLDER}}"
 
 setup(
     name='pyFixedWidthDataFile',
