@@ -1,0 +1,50 @@
+{
+	"name": "HeaderArquivo",
+	"fields": {
+		"01.0": {
+			"name": "codigo_registro",
+			"start_pos": 1,
+			"end_pos": 3,
+			"format": "alfa",
+			"default": "R00"
+		},
+
+		"02.0": {
+			"name": "lote_servico",
+			"start_pos": 4,
+			"end_pos": 7,
+			"format": "num",
+			"default": 1
+		},
+
+		"03.0": {
+			"name": "tipo_registro",
+			"start_pos": 8,
+			"end_pos": 8,
+			"format": "num",
+			"default": 0
+		},
+
+		"04.0": {
+			"name": "cod_cliente",
+			"start_pos": 9,
+			"end_pos": 15,
+			"format": "alfa"
+		},
+
+		"05.0": {
+			"name": "nome_cliente",
+			"start_pos": 16,
+			"end_pos": 39,
+			"format": "alfa"
+		},
+
+		"06.0": {
+			"name": "fim_registro",
+			"start_pos": 40,
+			"end_pos": 40,
+			"format": "alfa",
+			"default": "X"
+		}
+    }
+}

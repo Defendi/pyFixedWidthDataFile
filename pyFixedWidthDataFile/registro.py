@@ -2,17 +2,21 @@
 import os
 import json
 import unicodedata
-# import re
+import re
 #
 from decimal import Decimal
 from collections import OrderedDict
 from . import errors 
+from xmlrpc.client import boolean
 
 
 class BaseField(object):
+    _separator = ""
     
-    def __init__(self):
+    def __init__(self, separator: str = ""):
         self._value = None
+        if len(separator) > 0:
+            self._separator = separator[0]
 
     def _normalize_str(self, string):
         """
@@ -32,6 +36,9 @@ class BaseField(object):
             tocut = len(value) - self.digits
             value = value[:-(tocut)]
         return value
+    
+    def _regex_sub(self, pattern, repl, string):
+        return re.sub(pattern, repl, string)
 
     @property
     def value(self):
@@ -48,10 +55,18 @@ class BaseField(object):
                 value = self._cut(self.default,self.digits) if bool(self.default) else ""
                 
             if not isinstance(value, str):
-                print("{0} - {1}".format(self.name, value))
+                # print("{0} - {1}".format(self.name, value))
                 raise errors.TypeError(self, value)
 
-            value = self._cut(self._normalize_str(value), self.digits) 
+            value = self._cut(self._normalize_str(value), self.digits)
+            
+            # TODO: Fazer o tratamento de erro da regex
+            if bool(self.regex):
+                if isinstance(self.regex, tuple) and len(self.regex) > 1:
+                    if self.regex[0] == "sub":
+                        if len(self.regex) == 3:
+                            value = self._regex_sub(self.regex[1], self.regex[2], value)
+                
 
         elif self.formatting == 'num':
             if value == False or value == None:
@@ -109,13 +124,18 @@ class BaseField(object):
             if self.decimals:
                 value = str(self.value).replace('.', '')
                 chars_missing = self.digits - len(value)
-                return ('0' * chars_missing) + value
+                res = ('0' * chars_missing) + value
             else:
                 value = self.value
                 chars_missing = self.digits - len(value)
-                return value + (' ' * chars_missing)
-
-        return '{0:0{1}d}'.format(self.value, self.digits)
+                res = value + (' ' * chars_missing)
+        else:
+            res = '{0:0{1}d}'.format(self.value, self.digits)
+        
+        if bool(self._separator):
+            res = self._separator + res
+        
+        return res
 
     def __repr__(self):
         return str(self)
@@ -138,11 +158,12 @@ def CreateClassField(spec): #criar_classe_campo
         'start': start,
         'end': end,
         'digits': end - start,
-        'formatting': spec.get('formatting', 'alfa'),
+        'formatting': spec.get('format', 'alfa'),
         'decimals': spec.get('decimals', 0),
         'default': spec.get('default'),
         'ignore': spec.get('ignore', False),
         'required': spec.get('required', False),
+        'regex': spec.get('regex', False),
     }
 
     return type(name, (BaseField,), attrs)
@@ -155,7 +176,7 @@ class BasicRegister(object):
         attrs = {'_fields': fields}
 
         for Field in list(cls._fields_cls.values()):
-            field = Field()
+            field = Field(separator=kwargs.get("separator",""))
             fields.update({field.name: field})
             attrs.update({field.name: field})
 

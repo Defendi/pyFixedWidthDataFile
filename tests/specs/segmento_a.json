@@ -1,0 +1,50 @@
+{
+	"name": "SegmentoA",
+	"fields": {
+		"01.0": {
+			"name": "codigo_registro",
+			"start_pos": 1,
+			"end_pos": 3,
+			"format": "alfa",
+			"default": "R01"
+		},
+
+		"02.0": {
+			"name": "cod_item",
+			"start_pos": 4,
+			"end_pos": 7,
+			"format": "num"
+		},
+		
+		"03.0": {
+			"name": "desc_item",
+			"start_pos": 8,
+			"end_pos": 24,
+			"format": "alfa"
+		},
+
+		"04.0": {
+			"name": "qtd_item",
+			"start_pos": 25,
+			"end_pos": 31,
+			"format": "num",
+			"default": 1
+		},
+
+		"05.0": {
+			"name": "qtd_item",
+			"start_pos": 32,
+			"end_pos": 39,
+			"format": "num",
+			"default": 1
+		},
+
+		"06.0": {
+			"name": "fim_registro",
+			"start_pos": 40,
+			"end_pos": 40,
+			"format": "alfa",
+			"default": "X"
+		}
+    }
+}
