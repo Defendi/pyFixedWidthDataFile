@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 from os.path import join, dirname
+import subprocess
 
-exec(open(join(dirname(__file__), 'version.py'), 'rb').read())  # Load release variables
+version = subprocess.check_output(["git", "describe", "--abbrev=0", "--tags"]).decode('ascii').strip()
 
 setup(
     name='pyFixedWidthDataFile',

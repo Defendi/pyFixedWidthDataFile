@@ -2,4 +2,3 @@ exclude tests/*.*
 exclude tests/specs/*.*
 exclude .gitignore
 exclude .github/workflows/*.*
-include version.py
