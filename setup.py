@@ -21,7 +21,15 @@ setup(
     ],
     license='MIT',
     description='This is a simple library for creating fixed-width text files for transferring data between APIs.',
-    long_description=open('README.md', 'r').read(),
+    long_description="""
+    FWDataFile Creator
+
+This is a simple library for creating fixed-width text data files or text files (txt or csv) separated by a certain separator character.
+
+You can use it to exchange data between APIS and other applications.
+
+
+    """,
     download_url='https://github.com/Defendi/pyFixedWidthDataFile',
     classifiers=[
         'Development Status :: 3 - Alpha',
