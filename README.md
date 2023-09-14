@@ -1,4 +1,4 @@
-# FWDataFile Creator
+# Fixed Width Data File Creator
 This is a simple library for creating fixed-width text data files or text files (txt or csv) separated by a certain separator character. 
 
 You can use it to exchange data between APIS and other applications.
@@ -8,29 +8,23 @@ You can use it to exchange data between APIS and other applications.
 
 To install the package, just run the command below:
 
-<pre><code>pip install pyFixedWidthDataFile</code></pre>
+`pip install pyFixedWidthDataFile`
 
 ## Usage
 
-1) <b>Instantiate the class</b>:
+1) **Instantiate the class**:
 
-<code>
-from pyFixedWidthDataFile import FWDataFile
+`from pyFixedWidthDataFile import FWDataFile
+app = FWDataFile(path_to_specs_folder, optional_separator)`
 
-app = FWDataFile(path_to_specs_folder, optional_separator)
-</code>
 
-* path_to_specs_folder: Path to the folder containing the <b>Specs Files</b>
+* path_to_specs_folder: Path to the folder containing the **Specs Files**;
 * optional_separator: Separation character between fields (optional)
 
-2) <b>Specs Files</b>: Files, JSON standard, with specifications of the fields contained in the lines (records).
+2) **Specs Files**: Files, JSON standard, with specifications of the fields contained in the lines (records).
 
-Example:
-Header record for a fixed-width file of 40 columns
-
-<pre><code>
-
-{
+Example: Header record for a fixed-width file of 40 columns
+`{
 	"name": "header",
 	"fields": {
 		"field_01": {
@@ -74,37 +68,32 @@ Header record for a fixed-width file of 40 columns
 			"default": "X"
 		}
     }
-}
+}`
 
-</code></pre>
+Open the record with "{", enter the name clause, it is mandatory. Open the list of objects of type field with "fields {", enter the id of the field and enter the characteristics of the field.
 
-Open the record with "{", enter the name clause, it is mandatory. Open the list of objects of type field with "fields {", enter the <b>id</b> of the field and enter the characteristics of the field:
 # Characteristics List
-* <b>name</b>: (required) name of the field
-* <b>start_pos</b>: (required) starting position
-* <b>end_pos</b>: (required) end position
-* <b>format</b>: (required) field type, which can be:
+* name: (required) name of the field
+* start_pos: (required) starting position
+* end_pos: (required) end position
+* format: (required) field type, which can be:
 > 1. alpha: alphanumeric, text
 > 2. num: numeric (integer, floating point)
-* <b>default</b>: (optional) default value of the field, if there is no default value the field will not be filled with spaces, even if it is numeric.
-* <b>decimals</b>: (optional) only for numeric fields, number of decimal places
-* <b>ignore</b>: (optional) field to be ignored
-* <b>required</b>: (optional) mandatory field
-* <b>regex</b>: (optional) regular expression operations field
+* default: (optional) default value of the field, if there is no default value the field will not be filled with spaces, even if it is numeric.
+* decimals: (optional) only for numeric fields, number of decimal places
+* ignore: (optional) field to be ignored
+* required: (optional) mandatory field
+* regex: (optional) regular expression operations field
 
-3) <b>Inject the lines from the file:</b>:
-<code>
+3) Inject the lines from the file::
 
-app.append_line("header",cod_client="1234",name_client="Alexandre Defendi")
+`app.append_line("header",cod_client="1234",name_client="Alexandre Defendi")
+`
 
-</code>
+4) use the result: 
 
-4) <b>use the result</b>: 
-
-
-<code>
-print(app)
-</code>
+`print(app)
+`
 
 "R000001PED1234 Alexandre Defendi       X"
 
