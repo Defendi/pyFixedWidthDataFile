@@ -40,15 +40,13 @@ Open the record with "{", enter the name clause, it is mandatory. Open the list 
 * required: (optional) mandatory field
 * regex: (optional) regular expression operations field
 
-3) Inject the lines from the file::
+3) Inject the lines from the file:
 
-`app.append_line("header",cod_client="1234",name_client="Alexandre Defendi")
-`
+app.append_line("header",cod_client="1234",name_client="Alexandre Defendi")
 
 4) use the result: 
 
-`print(app)
-`
+print(app)
 
 "R000001PED1234 Alexandre Defendi       X"
 
