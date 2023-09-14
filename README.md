@@ -23,52 +23,7 @@ app = FWDataFile(path_to_specs_folder, optional_separator)`
 
 2) **Specs Files**: Files, JSON standard, with specifications of the fields contained in the lines (records).
 
-Example: Header record for a fixed-width file of 40 columns
-`{
-	"name": "header",
-	"fields": {
-		"field_01": {
-			"name": "register_type",
-			"start_pos": 1,
-			"end_pos": 3,
-			"format": "alfa",
-			"default": "R00"
-		},
-		"field_02": {
-			"name": "batch_number",
-			"start_pos": 4,
-			"end_pos": 7,
-			"format": "num",
-			"default": 1
-		},			
-		"field_03": {
-			"name": "type_reg",
-			"start_pos": 8,
-			"end_pos": 10
-			"format": "alfa",
-			"default": "PED"
-		},
-		"field_04": {
-			"name": "cod_client",
-			"start_pos": 9,
-			"end_pos": 15,
-			"format": "alfa"
-		},
-		"field_05": {
-			"name": "name_client",
-			"start_pos": 16,
-			"end_pos": 39,
-			"format": "alfa"
-		},
-		"field_06": {
-			"name": "end_reg",
-			"start_pos": 40,
-			"end_pos": 40,
-			"format": "alfa",
-			"default": "X"
-		}
-    }
-}`
+see example in tests/specs
 
 Open the record with "{", enter the name clause, it is mandatory. Open the list of objects of type field with "fields {", enter the id of the field and enter the characteristics of the field.
 
